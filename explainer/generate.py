@@ -231,7 +231,7 @@ def main() -> None:
 
     if args.adapter and mode != "regno":
         print("!! WARNING: without --regno-evidence a fine-tuned adapter almost always writes a fabricated "
-              "registration number into the rationale (paper Tab. 5: 100%).", flush=True)
+              "registration number into the rationale (paper Tab. 4: 100%).", flush=True)
 
     import torch
     from qwen_vl_utils import process_vision_info

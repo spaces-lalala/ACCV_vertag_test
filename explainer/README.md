@@ -4,8 +4,8 @@ The explanation module of VERTAG (ACCV 2026). Given an applied mark and a cited 
 
 > **Read before use**
 >
-> - **Fabricated registration numbers.** Without the cited mark's registration number, a fine-tuned adapter writes a fabricated registration number into almost every rationale (paper Tab. 5: 100% of cases; zero-shot: 0%). Whenever you know the cited mark's number, use `--regno-evidence`: it cuts fabrication to 5%.
-> - **Region evidence does not improve the content** of the fine-tuned model's rationales (Tab. 5: element recall 0.584 → 0.559).
+> - **Fabricated registration numbers.** Without the cited mark's registration number, a fine-tuned adapter writes a fabricated registration number into almost every rationale (paper Tab. 4: 100% of cases; zero-shot: 0%). Whenever you know the cited mark's number, use `--regno-evidence`: it cuts fabrication to 5%.
+> - **Region evidence does not improve the content** of the fine-tuned model's rationales (Tab. 4: element recall 0.584 → 0.559).
 > - The output is automatically generated research text. It is **not an examination opinion of TIPO and not legal advice**.
 
 ## Three ways to use it
@@ -16,7 +16,7 @@ The explanation module of VERTAG (ACCV 2026). Given an applied mark and a cited 
 | 2. Images + FADE region evidence | the images, FADE's $C_{ij}$ correspondence text for the top 5 patch pairs, and the matched region crops of the top 3 | `--condition C --fade-checkpoint ...` |
 | 3. Images + registration number | the images and the cited mark's registration number | `--condition C --regno-evidence` |
 
-The paper compares these inputs on 500 held-out cases (Tab. 5). Region evidence makes the content of the fine-tuned model's rationales slightly worse (element recall 0.584 → 0.559), while the registration number removes most fabricated numbers at no cost in content. This directory contains the generation code; the training code and the evaluation data, which come from the office-action corpus, are not distributed.
+The paper compares these inputs on 500 held-out cases (Tab. 4). Region evidence makes the content of the fine-tuned model's rationales slightly worse (element recall 0.584 → 0.559), while the registration number removes most fabricated numbers at no cost in content. This directory contains the generation code; the training code and the evaluation data, which come from the office-action corpus, are not distributed.
 
 ## 1. Install
 
@@ -33,8 +33,8 @@ The model runs in bf16 and needs a GPU with about 17 GB of free memory. Use 2 al
 
 | Adapter | Trained with | Paper | |
 |---|---|---|---|
-| [`MrFrogIsMe/vertag-explainer-lora`](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora) | the visual-only prompt in `generate.py` (the one used at inference) | Tab. 5, registration-number row | **default** |
-| [`MrFrogIsMe/vertag-explainer-lora-prompt-v0`](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora-prompt-v0) | an earlier prompt that also asked about pronunciation | Tab. 5, content rows; Suppl. S7 | |
+| [`MrFrogIsMe/vertag-explainer-lora`](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora) | the visual-only prompt in `generate.py` (the one used at inference) | Tab. 4, registration-number row | **default** |
+| [`MrFrogIsMe/vertag-explainer-lora-prompt-v0`](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora-prompt-v0) | an earlier prompt that also asked about pronunciation | Tab. 4, content rows; Suppl. S7 | |
 
 Pass an adapter's Hugging Face id with `--adapter`; it is downloaded on first use. Without `--adapter` the base model runs zero-shot. To keep a local copy, download it and pass the folder instead:
 
@@ -76,7 +76,7 @@ python generate.py --pairs ../FADE/examples/pairs.example.jsonl --image-root /pa
     --condition C --regno-evidence --adapter MrFrogIsMe/vertag-explainer-lora
 ```
 
-- **Evidence.** With `--fade-checkpoint`, FADE computes the evidence for each pair: the text lists the top 5 patch pairs by $C_{ij}$ and the matched region crops of the top 3 pairs are shown (`--n-crops`). The paper's evidence came from `fade_dinov2_vitl14_reg`. In the paper, region evidence was evaluated with `explainer_lora_prompt_v0` (Tab. 5 content row); `explainer_lora` with region evidence was not evaluated. Evidence computed beforehand with `../FADE/explain.py --evidence-out evidence.json` is read with `--evidence evidence.json` instead.
+- **Evidence.** With `--fade-checkpoint`, FADE computes the evidence for each pair: the text lists the top 5 patch pairs by $C_{ij}$ and the matched region crops of the top 3 pairs are shown (`--n-crops`). The paper's evidence came from `fade_dinov2_vitl14_reg`. In the paper, region evidence was evaluated with `explainer_lora_prompt_v0` (Tab. 4 content row); `explainer_lora` with region evidence was not evaluated. Evidence computed beforehand with `../FADE/explain.py --evidence-out evidence.json` is read with `--evidence evidence.json` instead.
 - **Registration number.** `--regno-evidence` takes it from the pair's `regno` field, or else from the first run of 5 to 8 digits in the cited image's file name; a pair without one stops the run.
 - Give exactly one evidence source with `--condition C`. The three inputs were evaluated separately; combinations were not.
 - A pair whose evidence is missing, or whose image or crop cannot be opened, stops the run with an error.

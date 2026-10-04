@@ -44,8 +44,8 @@ The frozen parts of the backbones are downloaded from their official sources on 
 
 | File | Backbone | Use it for | G1 R@100 |
 |---|---|---|---|
-| `fade_siglip_so400m.safetensors` | SigLIP-SO400M/14, 224 px | **retrieval**: the strongest retriever in the paper (Tab. 4) | 0.609 |
-| `fade_dinov2_vitl14_reg.safetensors` | DINOv2-L/14 with registers, 224 px | the model analysed in the paper (Tab. 3, Fig. 3) and the source of the explainer's region evidence | 0.146 |
+| `fade_siglip_so400m.safetensors` | SigLIP-SO400M/14, 224 px | **retrieval**: the strongest retriever in the paper (Tab. 3) | 0.609 |
+| `fade_dinov2_vitl14_reg.safetensors` | DINOv2-L/14 with registers, 224 px | the model analysed in the paper (Tab. 2, Fig. 3) and the source of the explainer's region evidence | 0.146 |
 
 Both expose the exact $C_{ij}$ decomposition. The retrieval and evaluation examples below use `fade_siglip_so400m`; the explanation examples use `fade_dinov2_vitl14_reg`, the model behind the paper's figures. Either checkpoint works with every script.
 

@@ -65,13 +65,13 @@ Install each component in its own Python 3.10 environment (see [FAQ](#faq)):
 
 | Component | Model | Base model | Paper | Download |
 |---|---|---|---|---|
-| FADE | `fade_siglip_so400m` (best retriever) | SigLIP-SO400M/14, 224 px | Tab. 4 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-fade) |
-| FADE | `fade_dinov2_vitl14_reg` | DINOv2-L/14-reg, 224 px | Tab. 3, Tab. 4, Fig. 3 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-fade) |
-| explainer | `vertag-explainer-lora` (default) | Qwen2.5-VL-7B-Instruct | Tab. 5 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora) |
-| explainer | `vertag-explainer-lora-prompt-v0` | Qwen2.5-VL-7B-Instruct | Tab. 5, Suppl. S7 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora-prompt-v0) |
-| LETITBE | reference engine | Qwen2.5-7B-Instruct, zero-shot | Tab. 6 | via [Ollama](https://ollama.com) (`qwen2.5:7b`) |
-| LETITBE | `letitbe-hitdet-gemma2-9b` | Gemma-2-9B-it | Tab. 6 | [Hugging Face](https://huggingface.co/annieyii/letitbe-hitdet-gemma2-9b) |
-| LETITBE | `letitbe-hitdet-breeze-7b` | Breeze-7B-Instruct-v1_0 | Suppl. Tab. S17 | [Hugging Face](https://huggingface.co/annieyii/letitbe-hitdet-breeze-7b) |
+| FADE | `fade_siglip_so400m` (best retriever) | SigLIP-SO400M/14, 224 px | Tab. 3 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-fade) |
+| FADE | `fade_dinov2_vitl14_reg` | DINOv2-L/14-reg, 224 px | Tab. 2, Tab. 3, Fig. 3 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-fade) |
+| explainer | `vertag-explainer-lora` (default) | Qwen2.5-VL-7B-Instruct | Tab. 4 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora) |
+| explainer | `vertag-explainer-lora-prompt-v0` | Qwen2.5-VL-7B-Instruct | Tab. 4, Suppl. S7 | [Hugging Face](https://huggingface.co/MrFrogIsMe/vertag-explainer-lora-prompt-v0) |
+| LETITBE | reference engine | Qwen2.5-7B-Instruct, zero-shot | Tab. 5 | via [Ollama](https://ollama.com) (`qwen2.5:7b`) |
+| LETITBE | `letitbe-hitdet-gemma2-9b` | Gemma-2-9B-it | Tab. 5 | [Hugging Face](https://huggingface.co/annieyii/letitbe-hitdet-gemma2-9b) |
+| LETITBE | `letitbe-hitdet-breeze-7b` | Breeze-7B-Instruct-v1_0 | Suppl. Tab. S18 | [Hugging Face](https://huggingface.co/annieyii/letitbe-hitdet-breeze-7b) |
 
 All released models are gathered in the [VERTAG collection on Hugging Face](https://huggingface.co/collections/MrFrogIsMe/vertag-accv-2026-6ac2a1b302d4f108b53aeba0). The FADE and explainer files are the models used in the paper. Download the FADE checkpoints into `FADE/checkpoints/` (the `hf` command comes with the requirements); the explainer takes an adapter's Hugging Face id directly:
 

@@ -28,12 +28,12 @@ SIGLIP_MEAN = (0.5, 0.5, 0.5)
 SIGLIP_STD = (0.5, 0.5, 0.5)
 
 REGISTRY: dict[str, BackboneSpec] = {
-    # backbone of fade_dinov2_vitl14_reg (Tab. 3, Fig. 3)
+    # backbone of fade_dinov2_vitl14_reg (Tab. 2, Fig. 3)
     "dinov2_vitl14_reg": BackboneSpec(
         name="dinov2_vitl14_reg", embed_dim=1024, resolution=224, patch_size=14,
         num_patches=256, mean=IMAGENET_MEAN, std=IMAGENET_STD,
     ),
-    # backbone of fade_siglip_so400m (Tab. 4)
+    # backbone of fade_siglip_so400m (Tab. 3)
     "siglip_so400m_224": BackboneSpec(
         name="siglip_so400m_224", embed_dim=1152, resolution=224, patch_size=14,
         num_patches=256, mean=SIGLIP_MEAN, std=SIGLIP_STD,
